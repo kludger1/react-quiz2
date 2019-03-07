@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Container from './components/Container.js';
 
 class App extends Component {
+  state = {
+    numOfVisitors: 0
+  }
+
+  addVisitors = () => {
+    let newNumOfVisitors = this.state.numOfVisitors + 1
+    this.setState({
+      numOfVisitors: newNumOfVisitors
+    });
+  }
+  resetVisitors = () => {
+    let newNumOfVisitors = 0
+    this.setState({
+      numOfVisitors: newNumOfVisitors
+    });
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Container addVisitors={this.addVisitors} resetVisitors ={this.resetVisitors} numOfVisitors = {this.state.numOfVisitors}/>
       </div>
     );
   }
